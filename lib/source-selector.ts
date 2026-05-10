@@ -31,9 +31,9 @@ ${SOURCE_LIST}
 CUSTOMER INTENT MAPPING - infer from query, then match:
 
 🛒 SHOPPING/PRODUCT INTENT ("i want X", "buy X", "best X under $", "X review"):
-   → amazon, ebay, trustpilot, youtube (reviews), reddit (opinions), google_news, techcrunch
-   → DO NOT pick finance/stock sources
-   → DO NOT pick producthunt (no search support — only use producthunt for "trending products" queries)
+   → amazon, flipkart, trustpilot, youtube (reviews), reddit (opinions), google_news, techcrunch
+   → DO NOT pick ebay, finance/stock sources, or producthunt (no search support)
+   → flipkart is essential for India-region queries
 
 💰 INVESTMENT INTENT ("should I invest", "stock price", "$TICKER", "market cap"):
    → yahoo_finance, sec_edgar, stocktwits, polymarket, cnbc, reddit, google_news, finviz

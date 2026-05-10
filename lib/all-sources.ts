@@ -74,7 +74,7 @@ export const ALL_SOURCES: SourceMeta[] = [
 
   // E-commerce
   { slug: 'amazon', name: 'Amazon', category: 'ecommerce', keywords: ['buy', 'product', 'price', 'review', 'shopping'] },
-  { slug: 'ebay', name: 'eBay', category: 'ecommerce', keywords: ['buy', 'auction', 'product', 'sell'] },
+  { slug: 'flipkart', name: 'Flipkart', category: 'ecommerce', keywords: ['buy', 'product', 'price', 'shopping', 'india', 'indian'] },
 
   // Travel
   { slug: 'airbnb', name: 'Airbnb', category: 'travel', keywords: ['stay', 'rental', 'travel', 'accommodation', 'vacation'] },

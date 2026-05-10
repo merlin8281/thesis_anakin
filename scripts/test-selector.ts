@@ -12,8 +12,8 @@ async function main() {
 
   const queries = [
     'i want macbook pro m4',
-    'MacBook Pro M4 specs price review',
-    'macbook pro m4 price',
+    'best phone under 30000 in india',
+    'sony wh-1000xm5 deals',
   ];
 
   for (const q of queries) {

@@ -44,7 +44,7 @@ export const ACTION_MAP: Record<string, string> = {
   'remoteok': 'ro_jobs',
   'weworkremotely': 'ww_jobs',
   'amazon': 'am_search_products',
-  'ebay': 'eb_search_listings',
+  'flipkart': 'fk_search_products',
   'airbnb': 'ab_search_stays',
   'google_flights': 'gf_search_flights',
   'booking': 'bk_search',
