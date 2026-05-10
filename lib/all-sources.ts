@@ -19,7 +19,6 @@ export const ALL_SOURCES: SourceMeta[] = [
   // Developer Tools
   { slug: 'github_public', name: 'GitHub', category: 'developer', keywords: ['code', 'programming', 'open source', 'software', 'repository', 'developer', 'tech'] },
   { slug: 'stackoverflow', name: 'StackOverflow', category: 'developer', keywords: ['programming', 'code', 'debug', 'error', 'developer', 'how to'] },
-  { slug: 'producthunt', name: 'Product Hunt', category: 'developer', keywords: ['startup', 'product', 'launch', 'app', 'tool', 'saas'] },
   { slug: 'npm', name: 'npm', category: 'developer', keywords: ['javascript', 'node', 'package', 'library', 'npm'] },
   { slug: 'pypi', name: 'PyPI', category: 'developer', keywords: ['python', 'package', 'library', 'pip'] },
   { slug: 'devto', name: 'DEV Community', category: 'developer', keywords: ['developer', 'programming', 'tutorial', 'tech'] },
