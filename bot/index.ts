@@ -17,7 +17,7 @@ try {
 
 const ANAKIN_API_KEY = process.env.ANAKIN_API_KEY!;
 const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN!;
-const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY!;
+const DARKBLOOM_API_KEY = process.env.DARKBLOOM_API_KEY!;
 
 if (!TELEGRAM_BOT_TOKEN) {
   console.error('TELEGRAM_BOT_TOKEN not set');
@@ -114,20 +114,20 @@ async function searchSource(slug: string, query: string) {
   }
 }
 
-// === OPENROUTER (Conversational Brain) ===
+// === DARKBLOOM (Conversational Brain — decentralized inference on Apple Silicon) ===
 async function chatWithLLM(messages: any[], tools?: any[]): Promise<any> {
-  const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+  const res = await fetch('https://api.darkbloom.dev/v1/chat/completions', {
     method: 'POST',
     headers: {
-      'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
+      'Authorization': `Bearer ${DARKBLOOM_API_KEY}`,
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      model: 'anthropic/claude-sonnet-4.5',
+      model: 'mlx-community/Qwen3.5-122B-A10B-8bit',
       messages,
       tools,
       temperature: 0.7,
-      max_tokens: 1500,
+      max_tokens: 2000,
     }),
   });
   return res.json();

@@ -3,23 +3,23 @@ import { ALL_SOURCES, SourceMeta } from './all-sources';
 const SOURCE_LIST = ALL_SOURCES.map(s => `${s.slug}: ${s.name} (${s.category}) - ${s.keywords.join(', ')}`).join('\n');
 
 export async function selectSources(query: string, maxSources: number = 8): Promise<SourceMeta[]> {
-  const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
+  const DARKBLOOM_API_KEY = process.env.DARKBLOOM_API_KEY;
   // If no API key, fall back to keyword matching
-  if (!OPENROUTER_API_KEY) {
-    console.warn('[source-selector] OPENROUTER_API_KEY missing — falling back to keyword regex');
+  if (!DARKBLOOM_API_KEY) {
+    console.warn('[source-selector] DARKBLOOM_API_KEY missing — falling back to keyword regex');
     return selectSourcesFallback(query, maxSources);
   }
-  console.log(`[source-selector] AI selecting for: "${query}"`);
+  console.log(`[source-selector] Darkbloom selecting for: "${query}"`);
 
   try {
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+    const response = await fetch('https://api.darkbloom.dev/v1/chat/completions', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
+        'Authorization': `Bearer ${DARKBLOOM_API_KEY}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'anthropic/claude-haiku-4.5',
+        model: 'mlx-community/Qwen3.5-122B-A10B-8bit',
         messages: [
           {
             role: 'system',
@@ -72,6 +72,7 @@ CRITICAL RULES:
 - Always include reddit for opinion-driven queries
 - Match the intent, NOT just keywords
 
+After any reasoning, your FINAL line MUST be just the JSON array.
 Return format: ["slug1", "slug2", ...]`
           },
           {
@@ -79,22 +80,22 @@ Return format: ["slug1", "slug2", ...]`
             content: query
           }
         ],
-        temperature: 0.1,
-        max_tokens: 200,
+        temperature: 0,
+        max_tokens: 1500,
       }),
     });
 
     const data = await response.json();
     const content = data.choices?.[0]?.message?.content || '';
 
-    // Parse the JSON array from response
-    const match = content.match(/\[[\s\S]*?\]/);
-    if (!match) {
-      console.error('AI selection failed, using fallback');
+    // Darkbloom models reason out loud — find the LAST JSON array in the response
+    const matches = content.match(/\[[^\[\]]*\]/g);
+    if (!matches || matches.length === 0) {
+      console.error('AI selection failed (no array found), using fallback');
       return selectSourcesFallback(query, maxSources);
     }
 
-    const slugs: string[] = JSON.parse(match[0]);
+    const slugs: string[] = JSON.parse(matches[matches.length - 1]);
     const selected = slugs
       .map(slug => ALL_SOURCES.find(s => s.slug === slug))
       .filter((s): s is SourceMeta => s !== undefined)
