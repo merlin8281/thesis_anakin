@@ -60,33 +60,6 @@ Same engine, conversational interface. Powered by Claude Sonnet 4.5 with **OpenR
 
 ![THESIS Architecture v4](docs/architecture.png)
 
-```
-┌─────────────┐    ┌─────────────────┐
-│ Web Terminal│    │  Telegram Bot   │
-│ (Next.js)   │    │   (Grammy)      │
-└──────┬──────┘    └────────┬────────┘
-       │                    │
-       └────────┬───────────┘
-                ▼
-       ┌────────────────────┐
-       │  AI Source Selector│   ← OpenRouter / Claude Haiku 4.5
-       │  (intent → 8 src)  │
-       └────────┬───────────┘
-                ▼
-       ┌────────────────────┐
-       │  Parallel Fan-out  │   ← Promise.all over selected sources
-       └────────┬───────────┘
-                ▼
-       ┌────────────────────┐
-       │  Anakin Holocron   │   ← 114 sources: ecommerce, finance, news,
-       │  Wire API          │     research, social, prediction, travel...
-       └────────┬───────────┘
-                ▼
-       ┌─────────────────────┐
-       │ Synthesis / Verdict │   ← OpenRouter / Claude Sonnet 4.5
-       └─────────────────────┘
-```
-
 A live Excalidraw version lives at `architecture.excalidraw.json` — drop it into [excalidraw.com](https://excalidraw.com) to view.
 
 ---
