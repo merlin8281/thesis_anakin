@@ -4,6 +4,9 @@
 
 Built on **Anakin.ai** for the data layer, **OpenRouter** (Claude) for the brain, and **Next.js 16** for the terminal UI. Ships with both a web terminal and a conversational Telegram bot.
 
+🌐 **Live demo:** [web-production-66b5e.up.railway.app](https://web-production-66b5e.up.railway.app)
+🤖 **Telegram bot:** [@thesis_anakinbot](https://t.me/thesis_anakinbot)
+
 ---
 
 ## Why this exists
@@ -54,6 +57,8 @@ Same engine, conversational interface. Powered by Claude Sonnet 4.5 with **OpenR
 ---
 
 ## Architecture
+
+![THESIS Architecture v4](docs/architecture.png)
 
 ```
 ┌─────────────┐    ┌─────────────────┐

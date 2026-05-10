@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import { SearchBar } from '@/components/SearchBar';
 import { SourceCard } from '@/components/SourceCard';
-import { SynthesisCard } from '@/components/SynthesisCard';
 import { TickerBar } from '@/components/TickerBar';
 import { LiveVideo } from '@/components/LiveVideo';
 import { WorldClock } from '@/components/WorldClock';
@@ -337,16 +336,6 @@ export default function Home() {
             </div>
           )}
 
-          {/* Synthesis */}
-          {topic && (
-            <div className="flex-shrink-0">
-              <SynthesisCard
-                status={synthesis.status}
-                summary={synthesis.summary}
-                error={synthesis.error}
-              />
-            </div>
-          )}
         </div>
 
         {/* Right Sidebar - Live Video + World Clock */}
